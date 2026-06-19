@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://crmhwskxdv87t"]
+
+[ext_resource type="Script" uid="uid://bq4k6p4bvbjln" path="res://obstaculo.gd" id="1_q7004"]
+[ext_resource type="Texture2D" uid="uid://dwjssfycxai3e" path="res://thorn.png" id="2_phkyr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phkyr"]
+size = Vector2(48.5, 36.5)
+
+[node name="Obstaculo" type="Area2D" unique_id=335668470]
+script = ExtResource("1_q7004")
+
+[node name="ImagemObstaculo" type="Sprite2D" parent="." unique_id=1213139232]
+z_index = 1
+position = Vector2(3.0517578e-05, 6.1035156e-05)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_phkyr")
+
+[node name="CorpoObstaculo" type="CollisionShape2D" parent="." unique_id=676383861]
+position = Vector2(-3.25, 8.75)
+shape = SubResource("RectangleShape2D_phkyr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

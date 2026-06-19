@@ -2,15 +2,19 @@
 
 [ext_resource type="Script" uid="uid://2g3spyqwyyxg" path="res://jogo_1.gd" id="1_nxjfv"]
 [ext_resource type="Texture2D" uid="uid://drtix87fsxx8y" path="res://background.png" id="2_c3wx7"]
+[ext_resource type="Texture2D" uid="uid://x7yec1jiwhlr" path="res://middleground2.png" id="3_y45co"]
 [ext_resource type="Texture2D" uid="uid://bsx5e5vmlu85a" path="res://foreground.png" id="3_yhuuu"]
 [ext_resource type="Texture2D" uid="uid://dn7q3l8pipleg" path="res://player.png" id="4_c3wx7"]
+[ext_resource type="Texture2D" uid="uid://b121m4gt0d8uw" path="res://middleground1.png" id="4_x0rtm"]
 [ext_resource type="Script" uid="uid://dxolwug1p72xq" path="res://jogador.gd" id="4_yhuuu"]
+[ext_resource type="Script" uid="uid://c5sps53i78bd" path="res://gerador_obstaculos.gd" id="8_eonkn"]
+[ext_resource type="Script" uid="uid://cgoe443nfmah6" path="res://gerador_item.gd" id="9_x32el"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhuuu"]
 size = Vector2(1146.5, 71)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y45co"]
-size = Vector2(75, 77.75)
+size = Vector2(82, 83)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x0rtm"]
 atlas = ExtResource("4_c3wx7")
@@ -75,32 +79,45 @@ animations = [{
 }]
 
 [node name="Jogo" type="Node2D" unique_id=954651569]
+z_index = 2
 script = ExtResource("1_nxjfv")
 
 [node name="Fundo" type="Sprite2D" parent="." unique_id=1734249271]
 texture_filter = 1
-scale = Vector2(3.588889, 3.588889)
+scale = Vector2(3.584375, 3.588889)
 texture = ExtResource("2_c3wx7")
 centered = false
 
 [node name="Fundo2" type="Sprite2D" parent="." unique_id=841449329]
 texture_filter = 1
-position = Vector2(1141.0001, 0)
+position = Vector2(1144.9999, 1)
 scale = Vector2(3.59375, 3.5777779)
 texture = ExtResource("2_c3wx7")
 centered = false
 
 [node name="MeioAzul" type="Sprite2D" parent="." unique_id=479305617]
 texture_filter = 1
+position = Vector2(571, 285.5)
+scale = Vector2(3.6062498, 3.1833336)
+texture = ExtResource("3_y45co")
 
 [node name="MeioAzul2" type="Sprite2D" parent="." unique_id=1179356308]
 texture_filter = 1
+position = Vector2(1721.5, 285.5)
+scale = Vector2(3.5656252, 3.1833334)
+texture = ExtResource("3_y45co")
 
 [node name="MeioPreto" type="Sprite2D" parent="." unique_id=1928072142]
 texture_filter = 1
+position = Vector2(569.5, 287)
+scale = Vector2(3.609375, 3.1666667)
+texture = ExtResource("4_x0rtm")
 
 [node name="MeioPreto2" type="Sprite2D" parent="." unique_id=1543703320]
 texture_filter = 1
+position = Vector2(1721, 284.5)
+scale = Vector2(3.56875, 3.1833334)
+texture = ExtResource("4_x0rtm")
 
 [node name="Chao" type="Sprite2D" parent="." unique_id=1120644506]
 texture_filter = 1
@@ -126,7 +143,7 @@ shape = SubResource("RectangleShape2D_yhuuu")
 script = ExtResource("4_yhuuu")
 
 [node name="Corpo" type="CollisionShape2D" parent="Jogador" unique_id=2141038851]
-position = Vector2(100.5, 532.875)
+position = Vector2(95, 532.5)
 shape = SubResource("RectangleShape2D_y45co")
 
 [node name="Imagem" type="AnimatedSprite2D" parent="Jogador" unique_id=1237809254]
@@ -136,3 +153,21 @@ scale = Vector2(5.317708, 3.9218764)
 sprite_frames = SubResource("SpriteFrames_f1dfi")
 animation = &"pular"
 autoplay = "default"
+
+[node name="GeradorObstaculos" type="Node2D" parent="." unique_id=282091153]
+script = ExtResource("8_eonkn")
+
+[node name="GeradorItem" type="Node2D" parent="." unique_id=816488286]
+script = ExtResource("9_x32el")
+
+[node name="Status" type="HBoxContainer" parent="." unique_id=921464575]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Vida" type="Label" parent="Status" unique_id=195934360]
+layout_mode = 2
+text = "Vidas: 5"
+
+[node name="Pontos" type="Label" parent="Status" unique_id=1235898453]
+layout_mode = 2
+text = "Pontos: 0"

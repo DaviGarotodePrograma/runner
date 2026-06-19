@@ -1,16 +1,17 @@
 extends CharacterBody2D
 
-var velocidade_pulo = -300  
+var vidas: int = 5
+var pontos: int = 0
+var velocidade_pulo = -550
 
 func _physics_process(delta: float) -> void:
-	# velocity já é uma propriedade do CharacterBody2D
-	velocity += get_gravity() * delta # adiciona gravidade aos poucos
+	velocity += get_gravity() * delta 
 
-	if is_on_floor(): # se está no chão
-		$Imagem.play("default") # dê play na animação padrão
-		if Input.is_action_pressed("ui_select"): # se apertar espaço
-			velocity.y = velocidade_pulo # velocidade para cima!
-	else: # se não está no chão
-		$Imagem.play("pular") # dê play na animação pular
+	if is_on_floor():
+		$Imagem.play("default") 
+		if Input.is_action_pressed("ui_select"):
+			velocity.y = velocidade_pulo 
+	else:
+		$Imagem.play("pular")
 
-	move_and_slide() # se mova de acordo com a propriedade velocity
+	move_and_slide()
